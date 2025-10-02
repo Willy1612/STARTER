@@ -8,6 +8,7 @@ function seleccionarMascotaJugador() {
     let inputVinicius=document.getElementById("Vinicius")
     let inputPedri=document.getElementById("Pedri")
 
+    
     let mascotaElegida = ""
         if(inputXavi.checked)
             {mascotaElegida="Xavi"
