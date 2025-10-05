@@ -1,6 +1,5 @@
 let ataqueJugador
 let ataqueEnemigo
-let resultado
 
 function iniciarJuego (){
     let botonMascotaJugador = document.getElementById("boton-mascota")
@@ -85,28 +84,27 @@ function ataqueAleatorioEnemigo() {
     else {
         ataqueEnemigo = "TIERRA"
     }
+
     combate()
    
-
 }
 
 function combate () {
 
       if (ataqueEnemigo == ataqueJugador) { 
-        alert("EMPATE") }
+        crearMensaje("EMPATE")}
         else if ( ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") { 
-                alert("GANASTE") 
+        crearMensaje("GANASTE")
         } 
         else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") { 
-                alert("GANASTE") 
+        crearMensaje("GANASTE")       
         }
         else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") { 
-                alert("GANASTE") 
+        crearMensaje("GANASTE")
         }
-        else { alert("PERDISTE") 
+        else { crearMensaje("PERDISTE")
         }
-
-
+        
 }
 
     
@@ -114,11 +112,11 @@ function combate () {
 //AGUA GANA A FUEGO
 //TIERRA GANA A AGUA
 
-function crearMensaje() {
+function crearMensaje(resultado) {
     let sectionMensajes = document.getElementById("mensajes")
 
     let parrafo = document.createElement("p")
-    parrafo.innerHTML = "Tu mascota atacó con " + ataqueJugador + ", la mascota del enemigo atacó con " + ataqueEnemigo + resultado
+    parrafo.innerHTML = "Tu mascota atacó con " + ataqueJugador + ", la mascota del enemigo atacó con " +  resultado
 
     sectionMensajes.appendChild(parrafo)
 
