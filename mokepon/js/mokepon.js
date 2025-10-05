@@ -1,5 +1,6 @@
 let ataqueJugador
 let ataqueEnemigo
+let resultado
 
 function iniciarJuego (){
     let botonMascotaJugador = document.getElementById("boton-mascota")
@@ -13,7 +14,6 @@ function iniciarJuego (){
     botonTierra.addEventListener("click" , ataqueTierra) 
 
 }
-
 
 function seleccionarMascotaJugador() {
     let inputXavi=document.getElementById("Xavi")
@@ -38,6 +38,7 @@ function seleccionarMascotaJugador() {
         }
     seleccionarMascotaEnemigo()
 }
+
 function seleccionarMascotaEnemigo() {
     
     let numeroAleatorioMascotaEnemigo = aleatorio(1,3)
@@ -54,22 +55,19 @@ function seleccionarMascotaEnemigo() {
     if(numeroAleatorioMascotaEnemigo == 3) {
         spanMascotaEnemiga.innerHTML = "Pedri"
     }
-    
-
 }
-         
+      
 function ataqueFuego(){
-    ataqueJugador = "FUEGO🔥"
+    ataqueJugador = "FUEGO"
     ataqueAleatorioEnemigo()
 }   
-
 function ataqueAgua(){
-    ataqueJugador = "AGUA💧"
+    ataqueJugador = "AGUA"
     ataqueAleatorioEnemigo()
 }   
 
 function ataqueTierra(){
-    ataqueJugador = "TIERRA🌱"
+    ataqueJugador = "TIERRA"
     ataqueAleatorioEnemigo()
 }
 
@@ -78,26 +76,49 @@ function ataqueAleatorioEnemigo() {
     let ataqueAleatorio = aleatorio(1,3)
 
     if(ataqueAleatorio == 1) {
-        ataqueEnemigo = "FUEGO🔥"
+        ataqueEnemigo = "FUEGO"
     }
 
     else if(ataqueAleatorio == 2) {    
-        ataqueEnemigo = "AGUA💧"
+        ataqueEnemigo = "AGUA"
     }
     else {
-        ataqueEnemigo = "TIERRA🌱"
+        ataqueEnemigo = "TIERRA"
     }
-
-
-    crearMensaje()
+    combate()
+   
 
 }
+
+function combate () {
+
+      if (ataqueEnemigo == ataqueJugador) { 
+        alert("EMPATE") }
+        else if ( ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") { 
+                alert("GANASTE") 
+        } 
+        else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") { 
+                alert("GANASTE") 
+        }
+        else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") { 
+                alert("GANASTE") 
+        }
+        else { alert("PERDISTE") 
+        }
+
+
+}
+
+    
+//FUEGO GANA A TIERRA
+//AGUA GANA A FUEGO
+//TIERRA GANA A AGUA
 
 function crearMensaje() {
     let sectionMensajes = document.getElementById("mensajes")
 
     let parrafo = document.createElement("p")
-    parrafo.innerHTML = "Tu mascota atacó con " + ataqueJugador + ", la mascota del enemigo atacó con " + ataqueEnemigo + " - PENDIENTE"
+    parrafo.innerHTML = "Tu mascota atacó con " + ataqueJugador + ", la mascota del enemigo atacó con " + ataqueEnemigo + resultado
 
     sectionMensajes.appendChild(parrafo)
 
