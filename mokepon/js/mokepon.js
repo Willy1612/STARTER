@@ -14,6 +14,7 @@ function iniciarJuego (){
 
 }
 
+
 function seleccionarMascotaJugador() {
     let inputXavi=document.getElementById("Xavi")
     let inputVinicius=document.getElementById("Vinicius")
@@ -116,7 +117,7 @@ function crearMensaje(resultado) {
     let sectionMensajes = document.getElementById("mensajes")
 
     let parrafo = document.createElement("p")
-    parrafo.innerHTML = "Tu mascota atacó con " + ataqueJugador + ", la mascota del enemigo atacó con " +  resultado
+    parrafo.innerHTML = "Tu mascota atacó con " + ataqueJugador + ", la mascota del enemigo atacó con " + ataqueEnemigo +". El resultado es: "+  resultado
 
     sectionMensajes.appendChild(parrafo)
 
