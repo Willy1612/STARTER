@@ -1,5 +1,7 @@
 let ataqueJugador
 let ataqueEnemigo
+let vidasJugador = 3
+let vidasEnemigo = 3
 
 function iniciarJuego (){
     let botonMascotaJugador = document.getElementById("boton-mascota")
@@ -91,21 +93,45 @@ function ataqueAleatorioEnemigo() {
 }
 
 function combate () {
+    let spanVidasJugador=document.getElementById("vidas-jugador")
+    let spanVidasEnemigo=document.getElementById("vidas-enemigo")   
 
       if (ataqueEnemigo == ataqueJugador) { 
         crearMensaje("EMPATE")}
         else if ( ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") { 
         crearMensaje("GANASTE")
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML=vidasEnemigo
         } 
+        
         else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") { 
-        crearMensaje("GANASTE")       
+        crearMensaje("GANASTE")
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML=vidasEnemigo       
         }
+
         else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") { 
         crearMensaje("GANASTE")
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML=vidasEnemigo
         }
-        else { crearMensaje("PERDISTE")
+        else { 
+            crearMensaje("PERDISTE")
+            vidasJugador--
+            spanVidasJugador.innerHTML=vidasJugador
         }
         
+    revisarVidas()
+}
+
+function revisarVidas () {
+    if (vidasJugador == "0"){
+         crearMensajeFinal("HAS PERDIDO👎")
+    }
+        else if (vidasEnemigo == "0"){
+          crearMensajeFinal("HAS GANADO! 👍")
+        }
+
 }
 
     
@@ -118,6 +144,16 @@ function crearMensaje(resultado) {
 
     let parrafo = document.createElement("p")
     parrafo.innerHTML = "Tu mascota atacó con " + ataqueJugador + ", la mascota del enemigo atacó con " + ataqueEnemigo +". El resultado es: "+  resultado
+
+    sectionMensajes.appendChild(parrafo)
+
+}
+
+function crearMensajeFinal(resultadoFinal) {
+    let sectionMensajes = document.getElementById("mensajes")
+
+    let parrafo = document.createElement("p")
+    parrafo.innerHTML = resultadoFinal
 
     sectionMensajes.appendChild(parrafo)
 
